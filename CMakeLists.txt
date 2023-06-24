@@ -1,0 +1,18 @@
+cmake_minimum_required(VERSION 3.12)
+project(hello LANGUAGES CXX)
+#set(CMAKE_BUILD_TYPE Release)
+set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_FLAGS -mavx2)
+set(CMAKE_CXX_FLAGS -O2)
+set(CXX 20)
+add_executable(main_ main.cpp neuralnet.h utils.h)
+find_package(benchmark REQUIRED)
+#find_package(TBB REQUIRED)
+find_package(Threads REQUIRED)
+find_package(fmt REQUIRED)
+#find_package(range-v3 REQUIRED)
+target_link_libraries(main_ PUBLIC Threads::Threads benchmark::benchmark fmt::fmt)
+#target_link_libraries(main_ PRIVATE TBB::tbb)
+
+#-BENCHMARK_ENABLE_GTEST_TESTS=OFF
